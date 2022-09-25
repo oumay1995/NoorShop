@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "epice"
+    }
+  },
+  "defaultProject": "epice",
+  "cli": {
+    "analytics": "df7d2df4-78bb-4d0c-9976-b6ce0aabbdfe"
+  }
 }

@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<div style="padding: 30px;">
+    <button type="button" class="btn btn-primary" (click)="AddCategorie()">Add categorie</button>
+</div>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Categorie Name</th>
+        <th scope="col">Actions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of categories">
+        <td></td>
+        <td>{{c.categorieName}}</td> 
+        <td><button type="button" class="btn btn-info" style="margin-left: 20%;">Display</button>
+        <button type="button" class="btn btn-warning" style="margin-left: 20%;" (click)="Save(c._id)">Edit</button>
+        <button type="button" class="btn btn-danger" style="margin-left: 20%;"  (click)="Delete(c._id)">Delete</button></td>
+      </tr>
+    </tbody>
+</table>

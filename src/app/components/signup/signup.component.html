@@ -1,48 +1,110 @@
 <div style="padding: 10%;">
-    <form>
+    <form [formGroup]="signupForm">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="firstName">first name</label>
+          <input type="text" class="form-control" id="firstname" placeholder="firstName" formControlName="firstName">
+          <div *ngIf="signupForm.controls['firstName'].invalid && (signupForm.controls['firstName'].dirty || signupForm.controls['firstName'].touched)">
+              <div *ngIf="signupForm.controls['firstName'].errors.required" class="text-danger">
+                  First Name is required
+              </div>
+              <div *ngIf="signupForm.controls['firstName'].errors.minlength" class="text-danger">
+                  First Name must have at least 3 characters
+              </div>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastName">last name</label>
+          <input type="text" class="form-control" id="lastname" placeholder="lastName" formControlName="lastName">
+          <div *ngIf="signupForm.controls['lastName'].invalid && (signupForm.controls['lastName'].dirty || signupForm.controls['lastName'].touched)">
+            <div *ngIf="signupForm.controls['lastName'].errors.required" class="text-danger">
+                Last Name is required
+            </div>
+            <div *ngIf="signupForm.controls['lastName'].errors.minlength" class="text-danger">
+                Last Name must have at least 3 characters
+            </div>
+          </div>        
+        </div>
+      </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" formControlName="email">
+            <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)">
+              <div *ngIf="signupForm.controls['email'].errors.required" class="text-danger">
+                  Email is required
+              </div>
+              <div *ngIf="signupForm.controls['email'].errors.email" class="text-danger">
+                  Email must be .......@....com
+              </div>
+            </div>
           </div>
           <div class="form-group col-md-6">
-            <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+
+            <label for="inputTel">tel</label>
+            <input type="text" class="form-control" id="inputTel" placeholder="tel   " formControlName="tel">
+            <div *ngIf="signupForm.controls['tel'].invalid && (signupForm.controls['tel'].dirty || signupForm.controls['tel'].touched)">
+              <div *ngIf="signupForm.controls['tel'].errors.required" class="text-danger">
+                  tel is required
+              </div>
+              <div *ngIf="signupForm.controls['tel'].errors.minlength" class="text-danger">
+                  tel must have at least 13 characters
+              </div>
+              <div *ngIf="signupForm.controls['tel'].errors.maxlength" class="text-danger">
+                  tel must have at least 3 characters
+              </div>
+              <div *ngIf="signupForm.controls['tel'].errors.pattern" class="text-danger">
+                  tel invalid
+              </div>
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <label for="inputAddress">Address</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-        </div>
-        <div class="form-group">
-          <label for="inputAddress2">Address 2</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Password</label>
+              <input type="password" class="form-control" id="inputPassword4" placeholder="Password" formControlName="password">
+              <div *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)">
+                <div *ngIf="signupForm.controls['password'].errors.required" class="text-danger">
+                  Password is required
+                </div>
+                <div *ngIf="signupForm.controls['password'].errors.minlength" class="text-danger">
+                  Password must have at least 3 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Repeat Password</label>
+              <input type="password" class="form-control" id="repeatpassword" placeholder="Repeat Password" formControlName="repeatpassword">
+              <div *ngIf="signupForm.controls['repeatpassword'].invalid && (signupForm.controls['repeatpassword'].dirty || signupForm.controls['repeatpassword'].touched)">
+                <div *ngIf="signupForm.controls['repeatpassword'].errors.required" class="text-danger">
+                    password confirm is required
+                </div>
+                <div *ngIf="signupForm.controls['repeatpassword'].errors.mustMatch" class="text-danger">
+                    password not matched 
+                </div>
+              </div>
+            </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputState">State</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              Check me out
-            </label>
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="Adresse    " formControlName="adresse">
+            <div *ngIf="signupForm.controls['adresse'].invalid && (signupForm.controls['adresse'].dirty || signupForm.controls['adresse'].touched)">
+                <div *ngIf="signupForm.controls['adresse'].errors.required" class="text-danger">
+                    adresse is required
+                </div>
+                <div *ngIf="signupForm.controls['adresse'].errors.minlength" class="text-danger">
+                    adresse must have at least 13 characters
+                </div>
+                <div *ngIf="signupForm.controls['adresse'].errors.maxlength" class="text-danger">
+                    adresse must have at least 3 characters
+                </div>
+                <div *ngIf="signupForm.controls['adresse'].errors.pattern" class="text-danger">
+                    adresse invalid
+                </div>
+            </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn btn-success" (click)="signup(signupForm.value)">sign up</button>
     </form>
 </div>
